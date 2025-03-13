@@ -4,22 +4,24 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'g++ -o output main.cpp'
-                echo 'Build Stage Successful'
+                script {
+                    sh 'g++ -o PES2UG22CS591-1 new.cpp'
+                }
             }
         }
+
         stage('Test') {
             steps {
-                sh './output'
-                echo 'Test Stage Successful'
+                script {
+                    sh './PES2UG22CS591-1'
+                }
             }
         }
+
         stage('Deploy') {
             steps {
-                sh 'git add main.cpp'
-                sh 'git commit -m "Added working C++ file"'
-                sh 'git push origin main'
-                echo 'Deployment Successful'
+                echo 'Deploying application...'
+                // Add deployment steps if required
             }
         }
     }
